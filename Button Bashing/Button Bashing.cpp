@@ -12,6 +12,7 @@ void printShort(v shortest) {
 	for (int j = ck_time; j < HOUR; ++j) {
 		if (shortest[j] != INF) {
 			cout << shortest[j] << " " << HOUR - j << endl;
+			break;
 		}
 	}
 }
@@ -31,7 +32,7 @@ void bfs(int s, v btns, v &visited, v &shortest) {
 			if (n < 0) n = 0;
 			else if (n > HOUR - 1) n = HOUR - 1; //if exceeded return bac to max time i.e 3600
 
-			if (visited[n] != 0) {	//if next button press results in time that hasn't been done before push into queue
+			if (visited[n] != 1) {	//if next button press results in time that hasn't been done before push into queue
 				btn_press.push(n);
 				visited[n] = 1;
 				shortest[n] = shortest[sum] + 1;
